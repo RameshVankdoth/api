@@ -1,0 +1,21 @@
+<form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" novalidate>
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username" [(ngModel)]="username" required #username="ngModel"
+      class="form-control" />
+    <div *ngIf="username.invalid && (username.dirty || username.touched)" class="invalid-feedback">
+      <div *ngIf="username.errors?.['required']">Username is required.</div>
+    </div>
+  </div>
+  <br />
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" [(ngModel)]="password" required #password="ngModel"
+      class="form-control" />
+    <div *ngIf="password.invalid && (password.dirty || password.touched)" class="invalid-feedback">
+      <div *ngIf="password.errors?.['required']">Password is required.</div>
+    </div>
+  </div>
+  <br />
+  <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Login</button>
+</form>
